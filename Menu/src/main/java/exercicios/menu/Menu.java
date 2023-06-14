@@ -1,68 +1,60 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-package exercicios.menu;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author allan
- */
+public class TrabalhoOrdenacao {
 
-public class Menu {
-
-    
     public static void main(String[] args) {
-        
-        int opcao = -1;
-        
-        while(opcao != 0 ){
-            
-            opcao = Integer.parseInt(JOptionPane.showInputDialog(
-                    "1 - Cadastro Alunos \n" +
-                    "2 - Cadastro Professores \n" +
-                    "3 - Cadastro de Disciplinas \n" +
-                    "4 - Cadastro de Turmas \n" +
-                    "0 - Sair"));
-            
-            switch (opcao) {
-                case 1:
-                    //Executa o método de cadastro de alunos
-                    cadastrarAluno();
+        String escolha;
+        OrdenacaoPesquisa pesquisa = new OrdenacaoPesquisa();
+
+        JOptionPane.showMessageDialog(null, "Vamos criar seu vetor de números inteiros");
+        pesquisa.criarVetor();
+        for (int i = 0; i < 5; i++) {
+            String input = JOptionPane.showInputDialog("Qual opção de ordenação você deseja?\n\n" +
+                    "(1) Ordenação por inserção\n" +
+                    "(2) Ordenação por seleção\n" +
+                    "(3) Ordenação por bolha\n" +
+                    "        Pesquisa\n" +
+                    "(4) Pesquisa Binária\n" +
+                    "(5) Pesquisa Linear\n" +
+                    "(6) Sair\n" +
+                    "(7) Novo Vetor de inteiros");
+
+            escolha = input.trim();
+
+            switch (escolha) {
+                case "1":
+                    JOptionPane.showMessageDialog(null, "Você escolheu a ordenação por inserção");
+                    pesquisa.insercao();
                     break;
-                case 2:
-                    //Executa o método de cadastro de Professores
-                    cadastrarProfessor();
-                    break;    
-                case 3:
-                    //Executa o método de cadastro de Diciplinas    
-                    cadastrarDisciplina();
-                    break;    
-                case 4:
-                    //Executa o método de cadastro de Turmas
-                    cadastrarTurma();
+                case "2":
+                    JOptionPane.showMessageDialog(null, "Você escolheu a ordenação por seleção");
+                    pesquisa.selecao();
+                    break;
+                case "3":
+                    JOptionPane.showMessageDialog(null, "Você escolheu a ordenação por bolha");
+                    pesquisa.bolha();
+                    break;
+                case "4":
+                    JOptionPane.showMessageDialog(null, "Você escolheu Pesquisa Binária");
+                    pesquisa.binaria();
+                    break;
+                case "5":
+                    JOptionPane.showMessageDialog(null, "Você escolheu Pesquisa Linear");
+                    pesquisa.linear();
+                    break;
+                case "6":
+                    JOptionPane.showMessageDialog(null, "Você escolheu Sair");
+                    i = 10;
+                    break;
+                case "7":
+                    JOptionPane.showMessageDialog(null, "Você escolheu mudar o vetor");
+                    pesquisa.criarVetor();
                     break;
                 default:
+                    JOptionPane.showMessageDialog(null, "OPÇÃO INVÁLIDA, TENTE NOVAMENTE!");
+                    i = 0;
                     break;
             }
-            
         }
-
     }
-    
-    public static void cadastrarAluno(){
-        JOptionPane.showMessageDialog(null, "Entrou no Cadastro de Alunos");
-    }
-    
-    public static void cadastrarProfessor(){
-        JOptionPane.showMessageDialog(null, "Entrou no Cadastro de Professores");
-    }
-    
-    public static void cadastrarDisciplina(){
-        JOptionPane.showMessageDialog(null, "Entrou no Cadastro de Disciplinas");
-    }
-    public static void cadastrarTurma(){
-        JOptionPane.showMessageDialog(null, "Entrou no Cadastro de Turmas");
-    }  
-}	
+}
